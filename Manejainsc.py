@@ -1,5 +1,6 @@
 from Inscripcion import Inscripcion
 import numpy as np
+from clasePersona import Persona
 class ManejaIns:
     __arre=None
     __cantidad=0
@@ -16,34 +17,44 @@ class ManejaIns:
             self.__arre[self.__cantidad]=Inscripcion
             self.__cantidad+=1
     def creArchivo(self):
-        arc=open('Inscripciones.csv','w')
-        for m in range(len(self.__arre)):
-            f=str(self.__arre[m].getFecha())
-            pag=str(self.__arre[m].getPago())
-            per=str(self.__arre[m].getPersona())
-            t=str(self.__arre[m].getTaller())
+        arc=open('Inscripciones.csv','a')
+        i=0
+        while(i<self.__cantidad):
+            f=self.__arre[i].getFecha()
+            pag=self.__arre[i].getPago()
+            per=self.__arre[i].getPersona()
+            t=self.__arre[i].GuardaTaller()
             arc.write(f)
+            arc.write(';')
             arc.write(pag)
+            arc.write(';')
             arc.write(per)
+            arc.write(';')
             arc.write(t)
             arc.write('\n')
+            i=i+1
         arc.close()    
     def mostrar(self):
         for i in range(len(self.__arre)):
             print(self.__arre[i])
-    def buscaI(self,dni):
+    def buscapersona(self,dni,pago):
         i=0
         band=0
-        while(i<len(self.__arre))and(band==0):
-            r=self.__arre[i].compara(dni)
-            if(r!=False):
-                band=1
+        while(band==0):
+            if(i<self.__cantidad):  
+              if(self.__arre[i].comparaPersona(dni)==1):
+                   taller=self.__arre[i].getTaller()
+                   if(pago==True):
+                     self.__arre[i].CancelaPago()
+                   band=1
+              else:
+                    i=i+1
             else:
-                i=i+1
-        if band==1:
-            return r
+                band=2
+
+        if(band==1):
+            return taller
         else:
-            return False
-    def CancelaPago(self,pos):
-        a=self.__arre[pos].actualizaPa()
-        return a
+            if(band==2):    
+              print('Persona no encontrada')              
+    

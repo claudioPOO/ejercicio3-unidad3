@@ -1,8 +1,10 @@
+
+import os
 from ManejaTaller import ManejaTaller
 from Manejainsc import ManejaIns
 from Manejap import ManejaPersona
 from claseMenu import Menu
-import os
+
 if __name__ == '__main__':
    
    MT=ManejaTaller()

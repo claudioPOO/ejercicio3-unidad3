@@ -15,6 +15,6 @@ class ManejaPersona:
                 else:
                     i=i+1
             if(band==True):
-                return 1
+                return self.__Personas[i]
             else:
                 return 0

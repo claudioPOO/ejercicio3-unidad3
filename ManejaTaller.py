@@ -37,43 +37,15 @@ class ManejaTaller:
             else:
                 i=i+1
         if(band==1):
-            return True
-        else:
-            return False             
-    def traeT(self,nombre):
-        i=0
-        band=0
-        while(i<len(self.__arre))and(band==0):
-            if(nombre==self.__arre[i].getNombreT()):
-                band=1
-            else:
-                i=i+1
-        if(band==1):
             return self.__arre[i]
         else:
-            return 0
-    def buscaxn(self,iden):
-        i=0
-        band=0
-        while(i<len(self.__arre))and band==0:
-            if(self.__arre[i].getNombreT()==iden):
-                self.muestra(i)
-                band=1
-            else:
-                i=i+1
-    def agregaT(self,nombre,inscripcion):
-        i=0
-        band=0
-        while(i<len(self.__arre))and(band==0):
-            if(nombre==self.__arre[i].getNombreT()):
-                band=1
-            else:
-                i=i+1
-        self.__arre[i].ainscripcion(inscripcion)
+            return False             
+  
+
     def muestra(self,i):
         s='Taller {}'.format(self.__arre[i].getNombreT())+' Monto Adeudado {}'.format(self.__arre[i].getM())
         print(s)
-    def buscai(self,iden):
+    def buscainscripcion(self,iden):
         i=0
         band=0
         while(i<len(self.__arre))and (band==0):

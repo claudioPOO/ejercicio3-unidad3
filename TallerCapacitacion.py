@@ -28,4 +28,9 @@ class TallerC:
         return self.__montoinscripcion
     def mostrarinscriptos(self):
         for i in range(len(self.__Inscripciones)):
-            print(self.__Inscripciones[i])    
+            print(self.__Inscripciones[i].getPersona())    
+    def NombreyMonto(self):
+        print('Taller: {}'.format(self.__nombreT))
+        print('Monto Adeudado: {}'.format(self.__montoinscripcion))
+    def Cancelamonto(self):
+        self.__montoinscripcion=0        

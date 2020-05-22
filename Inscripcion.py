@@ -12,22 +12,28 @@ class Inscripcion:
     def __str__(self):
         s='Fecha {} \n'.format(self.__fecha)+'Pago {} \n'.format(self.__pago)+'Persona\n{} \n'.format(self.__persona)
         return s
-    def compara (self,dni):
+    def comparaPersona(self,dni):
         if(dni==self.__persona.getDNI()):
-            return self.__tcap.getNombreT()
+            return 1
         else:
-            return False
+            if(dni!=self.__persona.getDNI()):
+                return 0
     def actualizaPa(self):
         self.__pago=True
-    def mostrarT(self):
-        return 'Taller\n{}'.format(self.__tcap)
-    def getFecha(self):
-        return self.__fecha
-    def getPago(self):
-        return self.__pago
-    def getPersona(self):
-        s='{}'.format(self.__persona.getNombre())+' {}'.format(self.__persona.getDNI())+' {}'.format(self.__persona.getD())
-        return s
     def getTaller(self):
-        s='{}'.format(self.__tcap.getIDT())+'{}'.format(self.__tcap.getNombreT())
+        return self.__tcap
+    def getFecha(self):
+        s='Fecha De Inscripcion: {} '.format(self.__fecha)
+        return s
+    def getPago(self):
+        s='Pago? {} '.format(self.__pago)
+        return s
+    def getPersona(self):
+        s='Nombre {} '.format(self.__persona.getNombre())+'Dni {} '.format(self.__persona.getDNI())+'Direccion {} '.format(self.__persona.getD())
+        return s
+    def CancelaPago(self):
+        self.__pago=True
+        self.__tcap.Cancelamonto()
+    def GuardaTaller(self):
+        s='Taller {} '.format(self.__tcap.getNombreT())
         return s
